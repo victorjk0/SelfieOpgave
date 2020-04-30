@@ -31,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
         imageView = findViewById(R.id.image);
     }
 
+
+    //Function for calling camera intent
     public void takePhoto(View view) {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
@@ -40,12 +42,15 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+    //When camera intent is done set resulted bitmap to image displayed
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             Bundle extras = data.getExtras();
+
             Bitmap imageBitmap = (Bitmap) extras.get("data");
             imageView.setImageBitmap(imageBitmap);
         }
